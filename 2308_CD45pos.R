@@ -129,7 +129,7 @@ ggplot(data_plot_umap, aes(x = UMAP_1, y = UMAP_2))+
   xlim(c(-10,12))+ylim(c(-13,11))+
   guides(color = guide_legend(override.aes = list(size=3)))+
     theme(axis.text = element_blank(), axis.ticks = element_blank())
-ggsave(paste(dato,"UMAP_GF_Contour_sample_plot.pdf",sep="_"), height = 4, width = 4)
+ggsave(paste(dato,"lymphoid","UMAP_GF_Contour_sample_plot.pdf",sep="_"), height = 4, width = 4)
 
 ggplot(data_plot_umap, aes(x = UMAP_1, y = UMAP_2))+ 
   geom_point_rast(size=0.1, colour="lightgrey")+
@@ -140,7 +140,7 @@ ggplot(data_plot_umap, aes(x = UMAP_1, y = UMAP_2))+
   xlim(c(-10,12))+ylim(c(-13,11))+
   guides(color = guide_legend(override.aes = list(size=3)))+
   theme(axis.text = element_blank(), axis.ticks = element_blank())
-ggsave(paste(dato,"UMAP_CI7-1_Contour_sample_plot.pdf",sep="_"), height = 4, width = 4)
+ggsave(paste(dato,"lymphoid","UMAP_CI7-1_Contour_sample_plot.pdf",sep="_"), height = 4, width = 4)
 
 ggplot(data_plot_umap, aes(x = UMAP_1, y = UMAP_2))+ 
   geom_point_rast(size=0.1, colour="lightgrey")+
@@ -151,7 +151,7 @@ ggplot(data_plot_umap, aes(x = UMAP_1, y = UMAP_2))+
   xlim(c(-10,12))+ylim(c(-13,11))+
   guides(color = guide_legend(override.aes = list(size=3)))+
   theme(axis.text = element_blank(), axis.ticks = element_blank())
-ggsave(paste(dato,"UMAP_CI8_Contour_sample_plot.pdf",sep="_"), height = 4, width = 4)
+ggsave(paste(dato,"lymphoid","UMAP_CI8_Contour_sample_plot.pdf",sep="_"), height = 4, width = 4)
 
 
 ggplot(data_plot_umap, aes(x = UMAP_1, y = UMAP_2))+ 
@@ -162,7 +162,7 @@ ggplot(data_plot_umap, aes(x = UMAP_1, y = UMAP_2))+
   theme_classic()+
   xlim(c(-10,12))+ylim(c(-13,11))+
   theme(axis.text = element_blank(), axis.ticks = element_blank())
-ggsave(paste(dato,"UMAP_CImerged_Contour_sample_plot.pdf",sep="_"), height = 4, width = 4)
+ggsave(paste(dato,"lymphoid","UMAP_CImerged_Contour_sample_plot.pdf",sep="_"), height = 4, width = 4)
 
 for (marker in marker_cols){
   plot_mark <- ggplot(data_plot_umap, aes(x = UMAP_1, y = UMAP_2, colour=data_umap[,marker]))+ 
@@ -171,7 +171,7 @@ for (marker in marker_cols){
     theme_classic()+
     labs(colour=marker)+
     theme(axis.text = element_blank(), axis.ticks = element_blank())
-  pdf(paste(dato,"UMAP",marker,"plot.pdf", sep="_"), height = 4, width = 4)
+  pdf(paste(dato,"lymphoid","UMAP",marker,"plot.pdf", sep="_"), height = 4, width = 4)
   print(plot_mark)
   dev.off()
 }
