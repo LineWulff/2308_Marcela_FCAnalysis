@@ -11,6 +11,7 @@ library(stringr)
 library(uwot)
 library(ggrastr)
 library(groupdata2)
+library(viridis)
 
 #### ---- variables used throughout script ---- ####
 projdir <- getwd()
@@ -61,6 +62,7 @@ ggplot(data_FC_df,aes(x=SampleID,y=SampleID,colour=sample))+
 
 ## correct names for protein expression
 colnames(data_FC_df) <- sub("^FJComp-","",colnames(data_FC_df))
+colnames(data_FC) <- sub("^FJComp-","",colnames(data_FC))
 #correct laser channel to protein
 channel_prot <- c("GATA-3","viability","CD4","T-bet","CD90.2","TCRb","FOXP3","RORyT","Lin","CD45")
 names(channel_prot) <- colnames(data_FC_df)[5:14]
@@ -87,7 +89,7 @@ summary(data_FC)
 # downsample to equal amount of cells in each group
 groupn <- c()
 for (group in unique(data_FC_df$group)){
-  groupn[group] <- nrow(down_FC[down_FC$group==group,])}
+  groupn[group] <- nrow(data_FC_df[data_FC_df$group==group,])}
 # check group with fewest observations
 groupn
 
@@ -124,7 +126,7 @@ ggplot(data_plot_umap, aes(x = UMAP_1, y = UMAP_2))+
              aes(x = UMAP_1, y = UMAP_2, colour=group))+
   scale_color_manual(values = group_col)+
   theme_classic()+
-  xlim(c(-13,10))+ylim(c(11,-11))+
+  xlim(c(-10,12))+ylim(c(-13,11))+
   guides(color = guide_legend(override.aes = list(size=3)))+
     theme(axis.text = element_blank(), axis.ticks = element_blank())
 ggsave(paste(dato,"UMAP_GF_Contour_sample_plot.pdf",sep="_"), height = 4, width = 4)
@@ -135,7 +137,7 @@ ggplot(data_plot_umap, aes(x = UMAP_1, y = UMAP_2))+
                   aes(x = UMAP_1, y = UMAP_2, colour=group))+
   scale_color_manual(values = group_col)+
   theme_classic()+
-  xlim(c(-13,10))+ylim(c(11,-11))+
+  xlim(c(-10,12))+ylim(c(-13,11))+
   guides(color = guide_legend(override.aes = list(size=3)))+
   theme(axis.text = element_blank(), axis.ticks = element_blank())
 ggsave(paste(dato,"UMAP_CI7-1_Contour_sample_plot.pdf",sep="_"), height = 4, width = 4)
@@ -146,7 +148,7 @@ ggplot(data_plot_umap, aes(x = UMAP_1, y = UMAP_2))+
                   aes(x = UMAP_1, y = UMAP_2, colour=group))+
   scale_color_manual(values = group_col)+
   theme_classic()+
-  xlim(c(-13,10))+ylim(c(11,-11))+
+  xlim(c(-10,12))+ylim(c(-13,11))+
   guides(color = guide_legend(override.aes = list(size=3)))+
   theme(axis.text = element_blank(), axis.ticks = element_blank())
 ggsave(paste(dato,"UMAP_CI8_Contour_sample_plot.pdf",sep="_"), height = 4, width = 4)
@@ -158,18 +160,20 @@ ggplot(data_plot_umap, aes(x = UMAP_1, y = UMAP_2))+
                   aes(x = UMAP_1, y = UMAP_2),
              colour="skyblue3")+
   theme_classic()+
-  xlim(c(-13,10))+ylim(c(11,-11))
-guides(color = guide_legend(override.aes = list(size=3)))
+  xlim(c(-10,12))+ylim(c(-13,11))+
+  theme(axis.text = element_blank(), axis.ticks = element_blank())
 ggsave(paste(dato,"UMAP_CImerged_Contour_sample_plot.pdf",sep="_"), height = 4, width = 4)
 
 for (marker in marker_cols){
-  plot_mark <- ggplot(data_plot_umap, aes(x = UMAP_1, y = UMAP_2, colour=marker))+ 
-    geom_point_rast(colour="lightgrey", size=1)+
-    scale_colour_viridis_c(option="magma")
+  plot_mark <- ggplot(data_plot_umap, aes(x = UMAP_1, y = UMAP_2, colour=data_umap[,marker]))+ 
+    geom_point_rast(size=1)+
+    scale_colour_viridis_c(option = "plasma")+
     theme_classic()+
-    xlim(c(-13,10))+ylim(c(11,-11))
-  guides(color = guide_legend(override.aes = list(size=3)))
-  pdf(paste(dato,"UMAP",marker,"plot.pdf",sep="_"), height = 4, width = 4)
+    labs(colour=marker)+
+    theme(axis.text = element_blank(), axis.ticks = element_blank())
+  pdf(paste(dato,"UMAP",marker,"plot.pdf", sep="_"), height = 4, width = 4)
   print(plot_mark)
   dev.off()
 }
+
+
