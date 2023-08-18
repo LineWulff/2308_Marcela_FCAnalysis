@@ -1,0 +1,515 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={2308\_CD45pos.R},
+  pdfauthor={linewulff},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{2308\_CD45pos.R}
+\author{linewulff}
+\date{2023-08-18}
+
+\begin{document}
+\maketitle
+
+R script for producing outputs in from \textbf{CD45+ cells} from
+Marcela's project Author: Line Wulff Date (created): 23-08-18 \#\#\#\#
+---- Initiate libraries ---- \#\#\#\#
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(flowCore)}
+\FunctionTok{library}\NormalTok{(FlowSOM)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Loading required package: igraph
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'igraph'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:flowCore':
+## 
+##     normalize
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:stats':
+## 
+##     decompose, spectrum
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:base':
+## 
+##     union
+\end{verbatim}
+
+\begin{verbatim}
+## Thanks for using FlowSOM. From version 2.1.4 on, the scale 
+## parameter in the FlowSOM function defaults to FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(Rtsne)}
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{library}\NormalTok{(stringr)}
+\FunctionTok{library}\NormalTok{(uwot)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Loading required package: Matrix
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'Matrix'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:flowCore':
+## 
+##     %&%
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggrastr)}
+\FunctionTok{library}\NormalTok{(groupdata2)}
+\FunctionTok{library}\NormalTok{(viridis)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Loading required package: viridisLite
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{projdir }\OtherTok{\textless{}{-}} \FunctionTok{getwd}\NormalTok{()}
+\NormalTok{dato }\OtherTok{\textless{}{-}} \FunctionTok{str\_sub}\NormalTok{(}\FunctionTok{str\_replace\_all}\NormalTok{(}\FunctionTok{Sys.Date}\NormalTok{(),}\StringTok{"{-}"}\NormalTok{,}\StringTok{"\_"}\NormalTok{), }\DecValTok{3}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{read-in-data-inspect-and-transform-labels-if-necessary--}{%
+\paragraph{---- Read in data, inspect and transform labels if necessary
+----}\label{read-in-data-inspect-and-transform-labels-if-necessary--}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data\_FC }\OtherTok{\textless{}{-}}\NormalTok{ flowCore}\SpecialCharTok{::}\FunctionTok{exprs}\NormalTok{(flowCore}\SpecialCharTok{::}\FunctionTok{read.FCS}\NormalTok{(}
+  \AttributeTok{filename =} \FunctionTok{paste}\NormalTok{(projdir,}\StringTok{"/inputdata/concat\_lymphoidcells.fcs"}\NormalTok{, }\AttributeTok{sep=}\StringTok{""}\NormalTok{), }
+  \AttributeTok{transformation =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{truncate\_max\_range =} \ConstantTok{FALSE}\NormalTok{))}
+
+\FunctionTok{head}\NormalTok{(data\_FC)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##         FSC-A FSC-H    SSC-A SSC-H FJComp-APC-A FJComp-APC-Cy7-A
+## [1,] 83001.36 65949 23233.76 13879     898.6735        249.03528
+## [2,] 46001.28 38336 14699.52 10577     368.3294         22.28113
+## [3,] 64507.04 51545 21369.92 15745    1148.7273        308.92029
+## [4,] 78530.40 66962 16772.80 12443     856.3241        491.53180
+## [5,] 44716.88 35028  9697.60  7229     332.9165        597.66479
+## [6,] 70792.80 60427 14495.36 10805    1611.5367        161.12521
+##      FJComp-APC-R700-A FJComp-BV421-A FJComp-BV605-A FJComp-BV786-A
+## [1,]         142.92430       253.6388       8373.459       349.1255
+## [2,]         239.33163       267.4852       6172.526      3483.5591
+## [3,]          85.87646       827.4769       4745.916       664.7535
+## [4,]        1530.09070       841.2349       6575.295      3816.9272
+## [5,]         833.25897       162.6591       4460.729      2819.7332
+## [6,]         254.03128       215.0618       6539.520       669.6907
+##      FJComp-FITC-A FJComp-PE-A FJComp-PE-Cy7-A FJComp-PerCP-Cy5-5-A Time
+## [1,]      425.7971   7667.6401       5888.8711             5234.287 5370
+## [2,]      197.3616   2266.1277       1794.6456            29752.227 5420
+## [3,]      319.8361  14241.3125        335.1519            13378.701 5440
+## [4,]      351.8362   3574.5925       2754.1641            54469.852 5490
+## [5,]      124.3922    775.9215       1445.9663            18077.318 5540
+## [6,]      404.8846   8771.8223        670.3710            15068.775 5560
+##      SampleID
+## [1,] 16581.89
+## [2,] 16433.96
+## [3,] 15992.33
+## [4,] 16629.09
+## [5,] 18218.38
+## [6,] 16874.88
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dim}\NormalTok{(data\_FC)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 166346     16
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Add sample IDs and groups based on SampleID timestamps from Marcela}
+\CommentTok{\# Lowest CI7{-}1 1{-}5, middle CI8 1{-}6, top GF 1{-}4}
+\NormalTok{data\_FC\_df }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame}\NormalTok{(data\_FC)}
+\NormalTok{data\_FC\_df}\SpecialCharTok{$}\NormalTok{group }\OtherTok{\textless{}{-}} \StringTok{"CI8"}
+\NormalTok{data\_FC\_df[data\_FC\_df}\SpecialCharTok{$}\NormalTok{SampleID}\SpecialCharTok{\textgreater{}}\DecValTok{190000}\NormalTok{,]}\SpecialCharTok{$}\NormalTok{group }\OtherTok{\textless{}{-}} \StringTok{"GF"}
+\NormalTok{data\_FC\_df[data\_FC\_df}\SpecialCharTok{$}\NormalTok{SampleID}\SpecialCharTok{\textless{}}\DecValTok{90000}\NormalTok{,]}\SpecialCharTok{$}\NormalTok{group }\OtherTok{\textless{}{-}} \StringTok{"CI7{-}1"}
+
+\NormalTok{data\_FC\_df}\SpecialCharTok{$}\NormalTok{sample }\OtherTok{\textless{}{-}} \ConstantTok{NA}
+\NormalTok{data\_FC\_df[data\_FC\_df}\SpecialCharTok{$}\NormalTok{SampleID}\SpecialCharTok{\textless{}}\DecValTok{25000}\NormalTok{,]}\SpecialCharTok{$}\NormalTok{sample }\OtherTok{\textless{}{-}} \StringTok{"1"}
+\NormalTok{data\_FC\_df[data\_FC\_df}\SpecialCharTok{$}\NormalTok{SampleID}\SpecialCharTok{\textless{}}\DecValTok{40000} \SpecialCharTok{\&}\NormalTok{ data\_FC\_df}\SpecialCharTok{$}\NormalTok{SampleID}\SpecialCharTok{\textgreater{}}\DecValTok{25000}\NormalTok{,]}\SpecialCharTok{$}\NormalTok{sample }\OtherTok{\textless{}{-}} \StringTok{"2"}
+\NormalTok{data\_FC\_df[data\_FC\_df}\SpecialCharTok{$}\NormalTok{SampleID}\SpecialCharTok{\textless{}}\DecValTok{58000} \SpecialCharTok{\&}\NormalTok{ data\_FC\_df}\SpecialCharTok{$}\NormalTok{SampleID}\SpecialCharTok{\textgreater{}}\DecValTok{40000}\NormalTok{,]}\SpecialCharTok{$}\NormalTok{sample }\OtherTok{\textless{}{-}} \StringTok{"3"}
+\NormalTok{data\_FC\_df[data\_FC\_df}\SpecialCharTok{$}\NormalTok{SampleID}\SpecialCharTok{\textless{}}\DecValTok{74000} \SpecialCharTok{\&}\NormalTok{ data\_FC\_df}\SpecialCharTok{$}\NormalTok{SampleID}\SpecialCharTok{\textgreater{}}\DecValTok{58000}\NormalTok{,]}\SpecialCharTok{$}\NormalTok{sample }\OtherTok{\textless{}{-}} \StringTok{"4"}
+\NormalTok{data\_FC\_df[data\_FC\_df}\SpecialCharTok{$}\NormalTok{SampleID}\SpecialCharTok{\textless{}}\DecValTok{90000} \SpecialCharTok{\&}\NormalTok{ data\_FC\_df}\SpecialCharTok{$}\NormalTok{SampleID}\SpecialCharTok{\textgreater{}}\DecValTok{74000}\NormalTok{,]}\SpecialCharTok{$}\NormalTok{sample }\OtherTok{\textless{}{-}} \StringTok{"5"}
+
+\NormalTok{data\_FC\_df[data\_FC\_df}\SpecialCharTok{$}\NormalTok{SampleID}\SpecialCharTok{\textless{}}\DecValTok{106000} \SpecialCharTok{\&}\NormalTok{ data\_FC\_df}\SpecialCharTok{$}\NormalTok{SampleID}\SpecialCharTok{\textgreater{}}\DecValTok{90000}\NormalTok{,]}\SpecialCharTok{$}\NormalTok{sample }\OtherTok{\textless{}{-}} \StringTok{"1"}
+\NormalTok{data\_FC\_df[data\_FC\_df}\SpecialCharTok{$}\NormalTok{SampleID}\SpecialCharTok{\textless{}}\DecValTok{122000} \SpecialCharTok{\&}\NormalTok{ data\_FC\_df}\SpecialCharTok{$}\NormalTok{SampleID}\SpecialCharTok{\textgreater{}}\DecValTok{106000}\NormalTok{,]}\SpecialCharTok{$}\NormalTok{sample }\OtherTok{\textless{}{-}} \StringTok{"2"}
+\NormalTok{data\_FC\_df[data\_FC\_df}\SpecialCharTok{$}\NormalTok{SampleID}\SpecialCharTok{\textless{}}\DecValTok{138000} \SpecialCharTok{\&}\NormalTok{ data\_FC\_df}\SpecialCharTok{$}\NormalTok{SampleID}\SpecialCharTok{\textgreater{}}\DecValTok{122000}\NormalTok{,]}\SpecialCharTok{$}\NormalTok{sample }\OtherTok{\textless{}{-}} \StringTok{"3"}
+\NormalTok{data\_FC\_df[data\_FC\_df}\SpecialCharTok{$}\NormalTok{SampleID}\SpecialCharTok{\textless{}}\DecValTok{156000} \SpecialCharTok{\&}\NormalTok{ data\_FC\_df}\SpecialCharTok{$}\NormalTok{SampleID}\SpecialCharTok{\textgreater{}}\DecValTok{138000}\NormalTok{,]}\SpecialCharTok{$}\NormalTok{sample }\OtherTok{\textless{}{-}} \StringTok{"4"}
+\NormalTok{data\_FC\_df[data\_FC\_df}\SpecialCharTok{$}\NormalTok{SampleID}\SpecialCharTok{\textless{}}\DecValTok{173000} \SpecialCharTok{\&}\NormalTok{ data\_FC\_df}\SpecialCharTok{$}\NormalTok{SampleID}\SpecialCharTok{\textgreater{}}\DecValTok{156000}\NormalTok{,]}\SpecialCharTok{$}\NormalTok{sample }\OtherTok{\textless{}{-}} \StringTok{"5"}
+\NormalTok{data\_FC\_df[data\_FC\_df}\SpecialCharTok{$}\NormalTok{SampleID}\SpecialCharTok{\textless{}}\DecValTok{190000} \SpecialCharTok{\&}\NormalTok{ data\_FC\_df}\SpecialCharTok{$}\NormalTok{SampleID}\SpecialCharTok{\textgreater{}}\DecValTok{173000}\NormalTok{,]}\SpecialCharTok{$}\NormalTok{sample }\OtherTok{\textless{}{-}} \StringTok{"6"}
+
+\NormalTok{data\_FC\_df[data\_FC\_df}\SpecialCharTok{$}\NormalTok{SampleID}\SpecialCharTok{\textless{}}\DecValTok{205000} \SpecialCharTok{\&}\NormalTok{ data\_FC\_df}\SpecialCharTok{$}\NormalTok{SampleID}\SpecialCharTok{\textgreater{}}\DecValTok{190000}\NormalTok{,]}\SpecialCharTok{$}\NormalTok{sample }\OtherTok{\textless{}{-}} \StringTok{"1"}
+\NormalTok{data\_FC\_df[data\_FC\_df}\SpecialCharTok{$}\NormalTok{SampleID}\SpecialCharTok{\textless{}}\DecValTok{222000} \SpecialCharTok{\&}\NormalTok{ data\_FC\_df}\SpecialCharTok{$}\NormalTok{SampleID}\SpecialCharTok{\textgreater{}}\DecValTok{205000}\NormalTok{,]}\SpecialCharTok{$}\NormalTok{sample }\OtherTok{\textless{}{-}} \StringTok{"2"}
+\NormalTok{data\_FC\_df[data\_FC\_df}\SpecialCharTok{$}\NormalTok{SampleID}\SpecialCharTok{\textless{}}\DecValTok{238000} \SpecialCharTok{\&}\NormalTok{ data\_FC\_df}\SpecialCharTok{$}\NormalTok{SampleID}\SpecialCharTok{\textgreater{}}\DecValTok{222000}\NormalTok{,]}\SpecialCharTok{$}\NormalTok{sample }\OtherTok{\textless{}{-}} \StringTok{"3"}
+\NormalTok{data\_FC\_df[data\_FC\_df}\SpecialCharTok{$}\NormalTok{SampleID}\SpecialCharTok{\textgreater{}}\DecValTok{238000}\NormalTok{,]}\SpecialCharTok{$}\NormalTok{sample }\OtherTok{\textless{}{-}} \StringTok{"4"}
+
+\NormalTok{data\_FC\_df}\SpecialCharTok{$}\NormalTok{sample }\OtherTok{\textless{}{-}} \FunctionTok{paste}\NormalTok{(data\_FC\_df}\SpecialCharTok{$}\NormalTok{group,data\_FC\_df}\SpecialCharTok{$}\NormalTok{sample,}\AttributeTok{sep=}\StringTok{"\_"}\NormalTok{)}
+
+\CommentTok{\# plot and check matches}
+\FunctionTok{ggplot}\NormalTok{(data\_FC\_df,}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{SampleID,}\AttributeTok{y=}\NormalTok{SampleID,}\AttributeTok{colour=}\NormalTok{sample))}\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{()}\SpecialCharTok{+}\CommentTok{\#scale\_color\_manual(values=c("red","blue","cyan","magenta"))+}
+  \CommentTok{\#geom\_hline(yintercept=c(190000,90000))+}
+  \CommentTok{\#geom\_vline(xintercept = c(222000,238000))}
+  \FunctionTok{theme\_classic}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{2308_CD45pos_files/figure-latex/unnamed-chunk-2-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# correct names for protein expression}
+\FunctionTok{colnames}\NormalTok{(data\_FC\_df) }\OtherTok{\textless{}{-}} \FunctionTok{sub}\NormalTok{(}\StringTok{"\^{}FJComp{-}"}\NormalTok{,}\StringTok{""}\NormalTok{,}\FunctionTok{colnames}\NormalTok{(data\_FC\_df))}
+\FunctionTok{colnames}\NormalTok{(data\_FC) }\OtherTok{\textless{}{-}} \FunctionTok{sub}\NormalTok{(}\StringTok{"\^{}FJComp{-}"}\NormalTok{,}\StringTok{""}\NormalTok{,}\FunctionTok{colnames}\NormalTok{(data\_FC))}
+\CommentTok{\#correct laser channel to protein}
+\NormalTok{channel\_prot }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"GATA{-}3"}\NormalTok{,}\StringTok{"viability"}\NormalTok{,}\StringTok{"CD4"}\NormalTok{,}\StringTok{"T{-}bet"}\NormalTok{,}\StringTok{"CD90.2"}\NormalTok{,}\StringTok{"TCRb"}\NormalTok{,}\StringTok{"FOXP3"}\NormalTok{,}\StringTok{"RORyT"}\NormalTok{,}\StringTok{"Lin"}\NormalTok{,}\StringTok{"CD45"}\NormalTok{)}
+\FunctionTok{names}\NormalTok{(channel\_prot) }\OtherTok{\textless{}{-}} \FunctionTok{colnames}\NormalTok{(data\_FC\_df)[}\DecValTok{5}\SpecialCharTok{:}\DecValTok{14}\NormalTok{]}
+
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \FunctionTok{seq}\NormalTok{(}\DecValTok{5}\NormalTok{,}\FunctionTok{length}\NormalTok{(channel\_prot)}\SpecialCharTok{+}\DecValTok{4}\NormalTok{))\{}
+  \FunctionTok{colnames}\NormalTok{(data\_FC\_df)[i] }\OtherTok{\textless{}{-}}\NormalTok{ channel\_prot[}\FunctionTok{colnames}\NormalTok{(data\_FC\_df)[i]]}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+select protein marker columns to use for dim. reduc.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# markers should NOT include markers used in gating strategy }
+\NormalTok{marker\_cols }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"FOXP3"}\NormalTok{,}\StringTok{"RORyT"}\NormalTok{,}\StringTok{"GATA{-}3"}\NormalTok{,}\StringTok{"T{-}bet"}\NormalTok{,}\StringTok{"CD4"}\NormalTok{,}\StringTok{"TCRb"}\NormalTok{)}
+
+\CommentTok{\# apply arcsinh transformation}
+\CommentTok{\# (with standard scale factor of 5 for CyTOF data; alternatively 150 for flow }
+\CommentTok{\# cytometry data; see Bendall et al. 2011, Science, Supplementary Figure S2)}
+\NormalTok{asinh\_scale }\OtherTok{\textless{}{-}} \DecValTok{150}
+\NormalTok{data\_FC\_df[, marker\_cols] }\OtherTok{\textless{}{-}} \FunctionTok{asinh}\NormalTok{(data\_FC\_df[, marker\_cols] }\SpecialCharTok{/}\NormalTok{ asinh\_scale)}
+
+\FunctionTok{summary}\NormalTok{(data\_FC)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      FSC-A            FSC-H            SSC-A           SSC-H      
+##  Min.   : 40530   Min.   : 30412   Min.   : 4016   Min.   : 3565  
+##  1st Qu.: 65280   1st Qu.: 54243   1st Qu.:13334   1st Qu.: 9973  
+##  Median : 76757   Median : 63955   Median :16044   Median :11861  
+##  Mean   : 76473   Mean   : 63703   Mean   :16502   Mean   :12123  
+##  3rd Qu.: 87578   3rd Qu.: 73070   3rd Qu.:19161   3rd Qu.:13988  
+##  Max.   :115222   Max.   :100734   Max.   :37333   Max.   :40854  
+##      APC-A           APC-Cy7-A        APC-R700-A        BV421-A       
+##  Min.   : -279.1   Min.   :-582.6   Min.   :-271.8   Min.   : -348.6  
+##  1st Qu.:  646.4   1st Qu.: 147.7   1st Qu.: 257.0   1st Qu.:  301.8  
+##  Median :  938.0   Median : 296.5   Median : 893.0   Median :  550.7  
+##  Mean   : 1083.5   Mean   : 319.5   Mean   :1002.3   Mean   :  934.7  
+##  3rd Qu.: 1248.7   3rd Qu.: 468.8   3rd Qu.:1584.6   3rd Qu.: 1370.9  
+##  Max.   :20037.5   Max.   :1279.6   Max.   :4905.2   Max.   :17010.2  
+##     BV605-A           BV786-A            FITC-A            PE-A         
+##  Min.   :  878.6   Min.   : -355.1   Min.   :-630.0   Min.   :  -96.86  
+##  1st Qu.: 2384.3   1st Qu.: 1418.6   1st Qu.: 213.7   1st Qu.: 1889.26  
+##  Median : 4553.8   Median : 3217.5   Median : 277.9   Median : 2645.81  
+##  Mean   : 5413.3   Mean   : 3668.5   Mean   : 425.1   Mean   : 3631.08  
+##  3rd Qu.: 7496.2   3rd Qu.: 5311.7   3rd Qu.: 383.6   3rd Qu.: 3616.86  
+##  Max.   :37815.1   Max.   :54418.4   Max.   :7850.4   Max.   :42512.96  
+##     PE-Cy7-A     PerCP-Cy5-5-A         Time            SampleID     
+##  Min.   : -472   Min.   :  2534   Min.   :   5370   Min.   : 12288  
+##  1st Qu.: 1056   1st Qu.: 17184   1st Qu.: 263968   1st Qu.: 64203  
+##  Median : 1840   Median : 28962   Median : 463492   Median :115981  
+##  Mean   : 2130   Mean   : 29673   Mean   : 521786   Mean   :121170  
+##  3rd Qu.: 2816   3rd Qu.: 39505   3rd Qu.: 710011   3rd Qu.:179354  
+##  Max.   :11633   Max.   :118735   Max.   :1979367   Max.   :249856
+\end{verbatim}
+
+\hypertarget{running-umap--}{%
+\paragraph{---- Running UMAP ----}\label{running-umap--}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# possibility of downsampling}
+\CommentTok{\# downsample to equal amount of cells in each group}
+\NormalTok{groupn }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{()}
+\ControlFlowTok{for}\NormalTok{ (group }\ControlFlowTok{in} \FunctionTok{unique}\NormalTok{(data\_FC\_df}\SpecialCharTok{$}\NormalTok{group))\{}
+\NormalTok{  groupn[group] }\OtherTok{\textless{}{-}} \FunctionTok{nrow}\NormalTok{(data\_FC\_df[data\_FC\_df}\SpecialCharTok{$}\NormalTok{group}\SpecialCharTok{==}\NormalTok{group,])\}}
+\CommentTok{\# check group with fewest observations}
+\NormalTok{groupn}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## CI7-1   CI8    GF 
+## 65042 70034 31270
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{down\_FC }\OtherTok{\textless{}{-}} \FunctionTok{downsample}\NormalTok{(data\_FC\_df, }\AttributeTok{cat\_col =} \StringTok{"group"}\NormalTok{)}
+
+\CommentTok{\#n\_sub \textless{}{-} 6000}
+\CommentTok{\#set.seed(1234)}
+\CommentTok{\#ix \textless{}{-} sample(1:length(labels), n\_sub)}
+\NormalTok{ix }\OtherTok{\textless{}{-}} \FunctionTok{rownames}\NormalTok{(down\_FC)}
+
+\CommentTok{\# prepare data for umapr (matrix format required)}
+\NormalTok{data\_umap }\OtherTok{\textless{}{-}}\NormalTok{ down\_FC[ix, marker\_cols]}
+\NormalTok{data\_umap }\OtherTok{\textless{}{-}} \FunctionTok{as.matrix}\NormalTok{(data\_umap)}
+\NormalTok{dups }\OtherTok{\textless{}{-}} \FunctionTok{duplicated}\NormalTok{(data\_umap)}
+\NormalTok{data\_umap }\OtherTok{\textless{}{-}}\NormalTok{ data\_umap[}\SpecialCharTok{!}\NormalTok{dups, ]}
+
+\NormalTok{umap\_emb }\OtherTok{\textless{}{-}} \FunctionTok{umap}\NormalTok{(data\_umap)}
+
+\CommentTok{\# prepare umap embedding output data for plot}
+\NormalTok{data\_plot\_umap }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame}\NormalTok{(umap\_emb)}
+\FunctionTok{colnames}\NormalTok{(data\_plot\_umap) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"UMAP\_1"}\NormalTok{, }\StringTok{"UMAP\_2"}\NormalTok{)}
+\FunctionTok{head}\NormalTok{(data\_plot\_umap);}\FunctionTok{dim}\NormalTok{(data\_plot\_umap)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      UMAP_1     UMAP_2
+## 1 -6.355478 -8.1516965
+## 2  2.967508  0.7519704
+## 3  6.238769  3.8709752
+## 4 -6.770925 -8.3127292
+## 5  2.221448 -0.9586001
+## 6 -3.065320  4.4007666
+\end{verbatim}
+
+\begin{verbatim}
+## [1] 93810     2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# add group labels and merged CI label}
+\NormalTok{data\_plot\_umap[,}\StringTok{"sample"}\NormalTok{] }\OtherTok{\textless{}{-}}\NormalTok{ down\_FC[ix,]}\SpecialCharTok{$}\NormalTok{sample}
+\NormalTok{data\_plot\_umap[,}\StringTok{"group"}\NormalTok{] }\OtherTok{\textless{}{-}}\NormalTok{ down\_FC[ix,]}\SpecialCharTok{$}\NormalTok{group}
+\NormalTok{data\_plot\_umap}\SpecialCharTok{$}\NormalTok{mergedCI }\OtherTok{\textless{}{-}}\NormalTok{ down\_FC}\SpecialCharTok{$}\NormalTok{group}
+\NormalTok{data\_plot\_umap[}\FunctionTok{startsWith}\NormalTok{(data\_plot\_umap}\SpecialCharTok{$}\NormalTok{mergedCI,}\StringTok{"CI"}\NormalTok{),]}\SpecialCharTok{$}\NormalTok{mergedCI }\OtherTok{\textless{}{-}} \StringTok{"CI"}
+
+\NormalTok{group\_col }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"CI8"}\OtherTok{=}\StringTok{"lightslateblue"}\NormalTok{,}\StringTok{"CI7{-}1"}\OtherTok{=}\StringTok{"darkslategray4"}\NormalTok{,}\StringTok{"GF"}\OtherTok{=}\StringTok{"gray60"}\NormalTok{)}
+\FunctionTok{ggplot}\NormalTok{(data\_plot\_umap, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ UMAP\_1, }\AttributeTok{y =}\NormalTok{ UMAP\_2))}\SpecialCharTok{+} 
+  \FunctionTok{geom\_point\_rast}\NormalTok{(}\AttributeTok{size=}\FloatTok{0.1}\NormalTok{, }\AttributeTok{colour=}\StringTok{"lightgrey"}\NormalTok{)}\SpecialCharTok{+}
+  \FunctionTok{geom\_density\_2d}\NormalTok{(}\AttributeTok{data=}\NormalTok{data\_plot\_umap[data\_plot\_umap}\SpecialCharTok{$}\NormalTok{group}\SpecialCharTok{==}\StringTok{"GF"}\NormalTok{,],}
+             \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ UMAP\_1, }\AttributeTok{y =}\NormalTok{ UMAP\_2, }\AttributeTok{colour=}\NormalTok{group))}\SpecialCharTok{+}
+  \FunctionTok{scale\_color\_manual}\NormalTok{(}\AttributeTok{values =}\NormalTok{ group\_col)}\SpecialCharTok{+}
+  \FunctionTok{theme\_classic}\NormalTok{()}\SpecialCharTok{+}
+  \FunctionTok{xlim}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{10}\NormalTok{,}\DecValTok{12}\NormalTok{))}\SpecialCharTok{+}\FunctionTok{ylim}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{13}\NormalTok{,}\DecValTok{11}\NormalTok{))}\SpecialCharTok{+}
+  \FunctionTok{guides}\NormalTok{(}\AttributeTok{color =} \FunctionTok{guide\_legend}\NormalTok{(}\AttributeTok{override.aes =} \FunctionTok{list}\NormalTok{(}\AttributeTok{size=}\DecValTok{3}\NormalTok{)))}\SpecialCharTok{+}
+    \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text =} \FunctionTok{element\_blank}\NormalTok{(), }\AttributeTok{axis.ticks =} \FunctionTok{element\_blank}\NormalTok{())}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{2308_CD45pos_files/figure-latex/unnamed-chunk-4-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggsave}\NormalTok{(}\FunctionTok{paste}\NormalTok{(dato,}\StringTok{"lymphoid"}\NormalTok{,}\StringTok{"UMAP\_GF\_Contour\_sample\_plot.pdf"}\NormalTok{,}\AttributeTok{sep=}\StringTok{"\_"}\NormalTok{), }\AttributeTok{height =} \DecValTok{4}\NormalTok{, }\AttributeTok{width =} \DecValTok{4}\NormalTok{)}
+
+\FunctionTok{ggplot}\NormalTok{(data\_plot\_umap, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ UMAP\_1, }\AttributeTok{y =}\NormalTok{ UMAP\_2))}\SpecialCharTok{+} 
+  \FunctionTok{geom\_point\_rast}\NormalTok{(}\AttributeTok{size=}\FloatTok{0.1}\NormalTok{, }\AttributeTok{colour=}\StringTok{"lightgrey"}\NormalTok{)}\SpecialCharTok{+}
+  \FunctionTok{geom\_density\_2d}\NormalTok{(}\AttributeTok{data=}\NormalTok{data\_plot\_umap[data\_plot\_umap}\SpecialCharTok{$}\NormalTok{group}\SpecialCharTok{==}\StringTok{"CI7{-}1"}\NormalTok{,],}
+                  \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ UMAP\_1, }\AttributeTok{y =}\NormalTok{ UMAP\_2, }\AttributeTok{colour=}\NormalTok{group))}\SpecialCharTok{+}
+  \FunctionTok{scale\_color\_manual}\NormalTok{(}\AttributeTok{values =}\NormalTok{ group\_col)}\SpecialCharTok{+}
+  \FunctionTok{theme\_classic}\NormalTok{()}\SpecialCharTok{+}
+  \FunctionTok{xlim}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{10}\NormalTok{,}\DecValTok{12}\NormalTok{))}\SpecialCharTok{+}\FunctionTok{ylim}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{13}\NormalTok{,}\DecValTok{11}\NormalTok{))}\SpecialCharTok{+}
+  \FunctionTok{guides}\NormalTok{(}\AttributeTok{color =} \FunctionTok{guide\_legend}\NormalTok{(}\AttributeTok{override.aes =} \FunctionTok{list}\NormalTok{(}\AttributeTok{size=}\DecValTok{3}\NormalTok{)))}\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text =} \FunctionTok{element\_blank}\NormalTok{(), }\AttributeTok{axis.ticks =} \FunctionTok{element\_blank}\NormalTok{())}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{2308_CD45pos_files/figure-latex/unnamed-chunk-4-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggsave}\NormalTok{(}\FunctionTok{paste}\NormalTok{(dato,}\StringTok{"lymphoid"}\NormalTok{,}\StringTok{"UMAP\_CI7{-}1\_Contour\_sample\_plot.pdf"}\NormalTok{,}\AttributeTok{sep=}\StringTok{"\_"}\NormalTok{), }\AttributeTok{height =} \DecValTok{4}\NormalTok{, }\AttributeTok{width =} \DecValTok{4}\NormalTok{)}
+
+\FunctionTok{ggplot}\NormalTok{(data\_plot\_umap, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ UMAP\_1, }\AttributeTok{y =}\NormalTok{ UMAP\_2))}\SpecialCharTok{+} 
+  \FunctionTok{geom\_point\_rast}\NormalTok{(}\AttributeTok{size=}\FloatTok{0.1}\NormalTok{, }\AttributeTok{colour=}\StringTok{"lightgrey"}\NormalTok{)}\SpecialCharTok{+}
+  \FunctionTok{geom\_density\_2d}\NormalTok{(}\AttributeTok{data=}\NormalTok{data\_plot\_umap[data\_plot\_umap}\SpecialCharTok{$}\NormalTok{group}\SpecialCharTok{==}\StringTok{"CI8"}\NormalTok{,],}
+                  \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ UMAP\_1, }\AttributeTok{y =}\NormalTok{ UMAP\_2, }\AttributeTok{colour=}\NormalTok{group))}\SpecialCharTok{+}
+  \FunctionTok{scale\_color\_manual}\NormalTok{(}\AttributeTok{values =}\NormalTok{ group\_col)}\SpecialCharTok{+}
+  \FunctionTok{theme\_classic}\NormalTok{()}\SpecialCharTok{+}
+  \FunctionTok{xlim}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{10}\NormalTok{,}\DecValTok{12}\NormalTok{))}\SpecialCharTok{+}\FunctionTok{ylim}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{13}\NormalTok{,}\DecValTok{11}\NormalTok{))}\SpecialCharTok{+}
+  \FunctionTok{guides}\NormalTok{(}\AttributeTok{color =} \FunctionTok{guide\_legend}\NormalTok{(}\AttributeTok{override.aes =} \FunctionTok{list}\NormalTok{(}\AttributeTok{size=}\DecValTok{3}\NormalTok{)))}\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text =} \FunctionTok{element\_blank}\NormalTok{(), }\AttributeTok{axis.ticks =} \FunctionTok{element\_blank}\NormalTok{())}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{2308_CD45pos_files/figure-latex/unnamed-chunk-4-3.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggsave}\NormalTok{(}\FunctionTok{paste}\NormalTok{(dato,}\StringTok{"lymphoid"}\NormalTok{,}\StringTok{"UMAP\_CI8\_Contour\_sample\_plot.pdf"}\NormalTok{,}\AttributeTok{sep=}\StringTok{"\_"}\NormalTok{), }\AttributeTok{height =} \DecValTok{4}\NormalTok{, }\AttributeTok{width =} \DecValTok{4}\NormalTok{)}
+
+
+\FunctionTok{ggplot}\NormalTok{(data\_plot\_umap, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ UMAP\_1, }\AttributeTok{y =}\NormalTok{ UMAP\_2))}\SpecialCharTok{+} 
+  \FunctionTok{geom\_point\_rast}\NormalTok{(}\AttributeTok{colour=}\StringTok{"lightgrey"}\NormalTok{, }\AttributeTok{size=}\DecValTok{1}\NormalTok{)}\SpecialCharTok{+}
+  \FunctionTok{geom\_density\_2d}\NormalTok{(}\AttributeTok{data=}\NormalTok{data\_plot\_umap[data\_plot\_umap}\SpecialCharTok{$}\NormalTok{mergedCI}\SpecialCharTok{==}\StringTok{"CI"}\NormalTok{,],}
+                  \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ UMAP\_1, }\AttributeTok{y =}\NormalTok{ UMAP\_2),}
+             \AttributeTok{colour=}\StringTok{"skyblue3"}\NormalTok{)}\SpecialCharTok{+}
+  \FunctionTok{theme\_classic}\NormalTok{()}\SpecialCharTok{+}
+  \FunctionTok{xlim}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{10}\NormalTok{,}\DecValTok{12}\NormalTok{))}\SpecialCharTok{+}\FunctionTok{ylim}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{13}\NormalTok{,}\DecValTok{11}\NormalTok{))}\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text =} \FunctionTok{element\_blank}\NormalTok{(), }\AttributeTok{axis.ticks =} \FunctionTok{element\_blank}\NormalTok{())}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{2308_CD45pos_files/figure-latex/unnamed-chunk-4-4.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggsave}\NormalTok{(}\FunctionTok{paste}\NormalTok{(dato,}\StringTok{"lymphoid"}\NormalTok{,}\StringTok{"UMAP\_CImerged\_Contour\_sample\_plot.pdf"}\NormalTok{,}\AttributeTok{sep=}\StringTok{"\_"}\NormalTok{), }\AttributeTok{height =} \DecValTok{4}\NormalTok{, }\AttributeTok{width =} \DecValTok{4}\NormalTok{)}
+
+\ControlFlowTok{for}\NormalTok{ (marker }\ControlFlowTok{in}\NormalTok{ marker\_cols)\{}
+\NormalTok{  plot\_mark }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(data\_plot\_umap, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ UMAP\_1, }\AttributeTok{y =}\NormalTok{ UMAP\_2, }\AttributeTok{colour=}\NormalTok{data\_umap[,marker]))}\SpecialCharTok{+} 
+    \FunctionTok{geom\_point\_rast}\NormalTok{(}\AttributeTok{size=}\DecValTok{1}\NormalTok{)}\SpecialCharTok{+}
+    \FunctionTok{scale\_colour\_viridis\_c}\NormalTok{(}\AttributeTok{option =} \StringTok{"plasma"}\NormalTok{)}\SpecialCharTok{+}
+    \FunctionTok{theme\_classic}\NormalTok{()}\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}\AttributeTok{colour=}\NormalTok{marker)}\SpecialCharTok{+}
+    \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text =} \FunctionTok{element\_blank}\NormalTok{(), }\AttributeTok{axis.ticks =} \FunctionTok{element\_blank}\NormalTok{())}
+  \FunctionTok{pdf}\NormalTok{(}\FunctionTok{paste}\NormalTok{(dato,}\StringTok{"lymphoid"}\NormalTok{,}\StringTok{"UMAP"}\NormalTok{,marker,}\StringTok{"plot.pdf"}\NormalTok{, }\AttributeTok{sep=}\StringTok{"\_"}\NormalTok{), }\AttributeTok{height =} \DecValTok{4}\NormalTok{, }\AttributeTok{width =} \DecValTok{4}\NormalTok{)}
+  \FunctionTok{print}\NormalTok{(plot\_mark)}
+  \FunctionTok{dev.off}\NormalTok{()}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+
+\end{document}
