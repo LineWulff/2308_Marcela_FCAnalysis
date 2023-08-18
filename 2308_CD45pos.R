@@ -26,20 +26,29 @@ data_FC_df[data_FC_df$SampleID<90000,]$group <- "CI7-1"
 
 data_FC_df$sample <- NA
 data_FC_df[data_FC_df$SampleID<25000,]$sample <- "1"
-data_FC_df[data_FC_df$SampleID<40000 & data_FC_df$SampleID>25000,]$group <- "2"
-data_FC_df[data_FC_df$SampleID<58000 & data_FC_df$SampleID>40000,]$group <- "3"
-data_FC_df[data_FC_df$SampleID<74000 & data_FC_df$SampleID>58000,]$group <- "4"
-data_FC_df[data_FC_df$SampleID<90000 & data_FC_df$SampleID>74000,]$group <- "5"
+data_FC_df[data_FC_df$SampleID<40000 & data_FC_df$SampleID>25000,]$sample <- "2"
+data_FC_df[data_FC_df$SampleID<58000 & data_FC_df$SampleID>40000,]$sample <- "3"
+data_FC_df[data_FC_df$SampleID<74000 & data_FC_df$SampleID>58000,]$sample <- "4"
+data_FC_df[data_FC_df$SampleID<90000 & data_FC_df$SampleID>74000,]$sample <- "5"
 
-data_FC_df[data_FC_df$SampleID<40000 & data_FC_df$SampleID>90000,]$group <- "2"
-data_FC_df[data_FC_df$SampleID<58000 & data_FC_df$SampleID>40000,]$group <- "3"
-data_FC_df[data_FC_df$SampleID<74000 & data_FC_df$SampleID>58000,]$group <- "4"
-data_FC_df[data_FC_df$SampleID<90000 & data_FC_df$SampleID>74000,]$group <- "5"
+data_FC_df[data_FC_df$SampleID<106000 & data_FC_df$SampleID>90000,]$sample <- "1"
+data_FC_df[data_FC_df$SampleID<122000 & data_FC_df$SampleID>106000,]$sample <- "2"
+data_FC_df[data_FC_df$SampleID<138000 & data_FC_df$SampleID>122000,]$sample <- "3"
+data_FC_df[data_FC_df$SampleID<156000 & data_FC_df$SampleID>138000,]$sample <- "4"
+data_FC_df[data_FC_df$SampleID<173000 & data_FC_df$SampleID>156000,]$sample <- "5"
+data_FC_df[data_FC_df$SampleID<190000 & data_FC_df$SampleID>173000,]$sample <- "6"
 
-ggplot(data_FC_df,aes(x=SampleID,y=SampleID,colour=group))+
-  geom_point()+scale_color_manual(values=c("red","blue","cyan","magenta"))+
-  geom_hline(yintercept=c(250000,190000,90000))+
-  geom_vline(xintercept = c(160000,58000))
+data_FC_df[data_FC_df$SampleID<205000 & data_FC_df$SampleID>190000,]$sample <- "1"
+data_FC_df[data_FC_df$SampleID<222000 & data_FC_df$SampleID>205000,]$sample <- "2"
+data_FC_df[data_FC_df$SampleID<238000 & data_FC_df$SampleID>222000,]$sample <- "3"
+data_FC_df[data_FC_df$SampleID>238000,]$sample <- "4"
+
+data_FC_df$sample <- paste(data_FC_df$group,data_FC_df$sample,sep="_")
+
+ggplot(data_FC_df,aes(x=SampleID,y=SampleID,colour=sample))+
+  geom_point()+#scale_color_manual(values=c("red","blue","cyan","magenta"))+
+  geom_hline(yintercept=c(190000,90000))+
+  geom_vline(xintercept = c(222000,238000))
 
 
 
