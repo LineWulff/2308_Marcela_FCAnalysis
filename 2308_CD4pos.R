@@ -120,6 +120,7 @@ data_plot_umap[,"group"] <- down_FC[ix,]$group
 data_plot_umap$mergedCI <- down_FC$group
 data_plot_umap[startsWith(data_plot_umap$mergedCI,"CI"),]$mergedCI <- "CI"
 
+#### Plot each individual group as seperate contour on top of total cells
 group_col <- c("CI8"="lightslateblue","CI7-1"="darkslategray4","GF"="gray60")
 ggplot(data_plot_umap, aes(x = UMAP_1, y = UMAP_2))+ 
   geom_point_rast(size=0.1, colour="lightgrey")+
@@ -165,6 +166,7 @@ ggplot(data_plot_umap, aes(x = UMAP_1, y = UMAP_2))+
   theme(axis.text = element_blank(), axis.ticks = element_blank())
 ggsave(paste(dato,"CD4cells","UMAP_CImerged_Contour_sample_plot.pdf",sep="_"), height = 4, width = 4)
 
+#### Colour by individual marker and save pdf versions
 for (marker in marker_cols){
   plot_mark <- ggplot(data_plot_umap, aes(x = UMAP_1, y = UMAP_2, colour=data_umap[,marker]))+ 
     geom_point_rast(size=1)+
